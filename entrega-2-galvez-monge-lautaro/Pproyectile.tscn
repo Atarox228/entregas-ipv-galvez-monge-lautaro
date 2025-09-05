@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn6poca685krt"]
+
+[ext_resource type="PackedScene" uid="uid://458nbdwfa6o3" path="res://AbstractProyectile.tscn" id="1_gcjx4"]
+[ext_resource type="Texture2D" uid="uid://onj177gmn5ci" path="res://resources/proyectile_player.png" id="2_rkisx"]
+
+[node name="proyectile" instance=ExtResource("1_gcjx4")]
+texture = ExtResource("2_rkisx")
+speed = 80.0
+
+[node name="Timer" parent="." index="0"]
+wait_time = 3.0

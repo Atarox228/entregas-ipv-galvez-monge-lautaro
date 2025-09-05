@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://458nbdwfa6o3"]
+
+[ext_resource type="Script" uid="uid://c0k08ysapao7p" path="res://abstract_proyectile.gd" id="1_6fy8e"]
+
+[node name="proyectile" type="Sprite2D"]
+script = ExtResource("1_6fy8e")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
