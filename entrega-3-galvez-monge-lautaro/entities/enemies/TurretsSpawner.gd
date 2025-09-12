@@ -3,6 +3,7 @@ extends Node
 @export var turret_scene: PackedScene
 @export var number_of_turrets: int
 
+#No descubri como evitar que spawneen fuera de objetos solidos
 func initialize():
 	# Obtener los datos del área
 	var spawn_area_node = $SpawnArea
@@ -19,6 +20,6 @@ func initialize():
 			randf_range(area_position.y - collision_shape.extents.y, area_position.y + collision_shape.extents.y)
 		)
 		
-		# Aquí iría la comprobación de colisiones antes de instanciar
+		
 		add_child(turret_instance)
 		turret_instance.initialize(turret_pos, self)

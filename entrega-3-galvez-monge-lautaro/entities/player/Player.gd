@@ -19,7 +19,7 @@ func initialize(projectile_container: Node) -> void:
 func _physics_process(delta):
 	_rotation_cannon()
 	_fire_cannon()
-	_movement(delta)
+	_movement()
 	velocity.y += GRAVITY
 
 func _rotation_cannon():
@@ -33,7 +33,7 @@ func _fire_cannon():
 			cannon.projectile_container = projectile_container
 		cannon.fire()
 
-func _movement(delta):
+func _movement():
 	# Player movement
 	var h_movement_direction: int = int(
 		Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")
@@ -61,9 +61,8 @@ func _movement(delta):
 		if c.get_collider() is RigidBody2D:
 			var body := c.get_collider() as RigidBody2D
 			var contact_point = c.get_position() - body.global_position
+			#fuerza por velocidad, se tiene gran aceleracion al iniciar
 			body.apply_impulse(-c.get_normal() * velocity.length() * 0.5, contact_point)
 	
-
-
 	
 	

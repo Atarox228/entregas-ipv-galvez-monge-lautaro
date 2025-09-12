@@ -9,6 +9,7 @@ extends Sprite2D
 
 var target: Node2D
 var projectile_container: Node
+#torreta funciona con mask, player en mask 2 y todo lo demas en 1
 
 #inicializador base para probar torretas manualmente
 func _ready():
@@ -22,17 +23,17 @@ func initialize(turret_pos: Vector2, projectile_container: Node) -> void:
 	global_position = turret_pos
 	self.projectile_container = projectile_container
 
-# Detecta entrada del jugador
+
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if target == null and body.name == "Player":
 		target = body
-		fire_timer.start()  # empieza a disparar periódicamente
+		fire_timer.start() 
 
-# Detecta salida del jugador
+
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body == target:
 		target = null
-		fire_timer.stop()  # deja de disparar
+		fire_timer.stop()
 
 # Función de disparo controlada por Timer
 func _try_shot():
