@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://dnc5muoeyfwah"]
+
+[ext_resource type="PackedScene" uid="uid://bu54ghcpt4hen" path="res://entities/player/Player.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
+[ext_resource type="Script" uid="uid://bkmvt4ya2xfm8" path="res://Main.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="4"]
+[ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://dc6gndk5scvsf" path="res://entities/world/floor.tscn" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://ey3uhyy5sdv2" path="res://entities/world/objeto.tscn" id="7_trn2v"]
+[ext_resource type="Texture2D" uid="uid://j14wrxanwhni" path="res://assets/textures/player.png" id="8_03owx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03owx"]
+size = Vector2(869.5, 377)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkp8b"]
+size = Vector2(221, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trn2v"]
+size = Vector2(112, 13)
+
+[node name="Main" type="Node"]
+script = ExtResource("3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_right = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(181, 393)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TurretsSpawner" type="Node" parent="."]
+script = ExtResource("5")
+turret_scene = ExtResource("4")
+number_of_turrets = 3
+
+[node name="SpawnArea" type="Area2D" parent="TurretsSpawner"]
+position = Vector2(428, 192)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurretsSpawner/SpawnArea"]
+position = Vector2(3.25, 0)
+shape = SubResource("RectangleShape2D_03owx")
+
+[node name="Piso" parent="." instance=ExtResource("6_3dxm6")]
+position = Vector2(399, 562)
+
+[node name="Piso2" parent="." instance=ExtResource("6_3dxm6")]
+position = Vector2(1377, 562)
+
+[node name="Piso3" parent="." instance=ExtResource("6_3dxm6")]
+position = Vector2(1267, 311)
+
+[node name="Muro" parent="." instance=ExtResource("7_trn2v")]
+position = Vector2(489, 444)
+mass = 2.0
+
+[node name="Muro2" parent="." instance=ExtResource("7_trn2v")]
+position = Vector2(310, 443)
+
+[node name="Puente" type="RigidBody2D" parent="."]
+position = Vector2(887, 473)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Puente"]
+scale = Vector2(3.4375, 0.203125)
+texture = ExtResource("8_03owx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puente"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_wkp8b")
+
+[node name="Puente2" type="StaticBody2D" parent="."]
+position = Vector2(811, 370)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Puente2"]
+scale = Vector2(1.76563, 0.203125)
+texture = ExtResource("8_03owx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puente2"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_trn2v")
+
+[node name="Turret" parent="." instance=ExtResource("4")]
+position = Vector2(800, 254)

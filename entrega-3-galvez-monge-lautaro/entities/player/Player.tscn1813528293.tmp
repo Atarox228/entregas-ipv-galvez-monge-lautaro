@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu54ghcpt4hen"]
+
+[ext_resource type="Script" uid="uid://m5cj6f1avxxs" path="res://entities/player/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://j14wrxanwhni" path="res://assets/textures/player.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://doiohr46lpdc7" path="res://assets/textures/cannon.png" id="3"]
+[ext_resource type="Script" uid="uid://dw1dbb5kq664d" path="res://entities/player/Cannon.gd" id="4"]
+[ext_resource type="PackedScene" path="res://entities/player/PlayerProjectile.tscn" id="5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3lhm"]
+radius = 27.0
+height = 60.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1")
+ACCELERATION = null
+H_SPEED_LIMIT = null
+FRICTION_WEIGHT = null
+JUMP_SPEED = 200.0
+GRAVITY = null
+push_force = 10.0
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-0.0635071, 0.165405)
+texture = ExtResource("2")
+
+[node name="Cannon" type="Sprite2D" parent="."]
+position = Vector2(-0.0635071, 0.165405)
+texture = ExtResource("3")
+script = ExtResource("4")
+projectile_scene = ExtResource("5")
+
+[node name="CannonTip" type="Marker2D" parent="Cannon"]
+position = Vector2(15, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g3lhm")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

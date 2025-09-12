@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ey3uhyy5sdv2"]
+
+[ext_resource type="Texture2D" uid="uid://j14wrxanwhni" path="res://assets/textures/player.png" id="1_6023e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jov5"]
+size = Vector2(20, 64)
+
+[node name="ObjetoFisico" type="RigidBody2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3125, 1)
+texture = ExtResource("1_6023e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1jov5")
