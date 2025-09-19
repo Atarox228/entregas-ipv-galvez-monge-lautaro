@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://twboko0towhk"]
+
+[ext_resource type="Texture2D" uid="uid://ctr8khlrbhmg7" path="res://assets/textures/background/Space Background.png" id="1_xlnnr"]
+[ext_resource type="Texture2D" uid="uid://fklg0e77oeev" path="res://assets/textures/tileset/ruins/Dungeon Ruins Tileset Day.png" id="2_gwuki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ri8u"]
+atlas = ExtResource("2_gwuki")
+region = Rect2(319.868, 143.309, 191.497, 16.8874)
+
+[node name="BackgroundContainer" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(320, 240)
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(1200, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+scale = Vector2(6, 4)
+texture = ExtResource("1_xlnnr")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(320, 300)
+motion_mirroring = Vector2(800, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(169, 97)
+scale = Vector2(6, 4)
+texture = SubResource("AtlasTexture_0ri8u")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+offset_left = -403.0
+offset_top = 123.0
+offset_right = 743.0
+offset_bottom = 457.0
+color = Color(0.964706, 0.815686, 0.615686, 1)
