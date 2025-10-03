@@ -16,3 +16,15 @@ Una interfez esta diseñada para mostrar informacion revelante para el jugador, 
 
 ## UX
 
+   1. Tipos de Accesibilidad + Inclusion
+   - Exclusion 
+   - Segregracion (Tener algo para cada tipo). Libros para ciegos(puranmente braile) y otros
+   - Integracion (Caminos para gente ciega, semaforos con ruidos) Metodos para integrar a la minoria en el grupo de la mayoria
+   - Inclusion (Todos juntos)
+
+   2. A incluir
+   - Vision
+   - Escucha
+   - Motriz
+   - Cognitivo
+   -   
