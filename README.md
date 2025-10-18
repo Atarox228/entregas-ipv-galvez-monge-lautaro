@@ -27,4 +27,29 @@ Una interfez esta diseñada para mostrar informacion revelante para el jugador, 
    - Escucha
    - Motriz
    - Cognitivo
-   -   
+
+# Sonido
+
+## tipos de uso
+   - crear atmosfera 
+   - define el espacio
+   - punto de atencion
+   - contextual / narrativo
+
+## Nodos utiles
+
+   # AudioStreamPlayer
+   1. Propiedades
+      - D
+      - 
+   2. Formatos
+      - .wav (muy pesado)
+      - OGG file (como el mp3) peso minimo, audios de whatsapp
+      - Manual Generation 
+      - RandomPitch
+      - Microphone
+   3. Funciones
+      - Tiene un mixer que permite mezclar buses, permite que puedas enlazar buses entre si y agregar efecto a cada bus
+      - filtros para cada bus, tiene una gran lista
+      - Conexiones entre buses y dependencia de buses con otros buses
+      - hacer que los sonidos se conecten a señales para conectarlos con las acciones del jugador o en las mismas funciones de player
