@@ -17,7 +17,7 @@ func _setup() -> void:
 		printerr("%s: character is not defined!" % name)
 	for state: PlayerState in states_list:
 		state.character = character
-
+	character.hit.connect(notify_hit)
 
 ## Esta función deriva el handleo de cada golpe que recibe
 ## el personaje al estado actual particular, en vez de vincular

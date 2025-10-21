@@ -22,7 +22,6 @@ func handle_input(event: InputEvent) -> void:
 # Callback derivado de _physics_process
 func update(delta: float) -> void:
 	character._handle_move_input(delta)
-	character._apply_movement(delta)
 	if character.h_movement_direction == 0:
 		character._handle_deacceleration(delta)
 	character._apply_movement(delta)
@@ -31,10 +30,10 @@ func update(delta: float) -> void:
 			finished.emit(&"idle")
 		finished.emit(&"walk")
 	else:
-			if character.velocity.y > 0:
-				character._play_animation(&"fall")
-			else:
-				character._play_animation(&"jump")
+		if character.velocity.y > 0:
+			character._play_animation(&"fall")
+		else:
+			character._play_animation(&"jump")
 
 
 # Callback cuando finaliza una animación en tiempo del estado actual

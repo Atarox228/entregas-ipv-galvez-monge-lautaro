@@ -146,10 +146,29 @@ func _play_animation(animation: StringName) -> void:
 
 func _on_idle_timer_timeout() -> void:
 	if pathfinding != null:
-		var random_target: Vector2 = global_position + Vector2(
-			randf_range(-radioPatrullaje.x,radioPatrullaje.x),
-			randf_range(-radioPatrullaje.y,radioPatrullaje.y)
+		var attempts: int = 0
+		var random_target: Vector2
+		var valid_path: bool = false
+		
+		# Intentar hasta 10 veces encontrar un punto válido
+		while attempts < 10 and not valid_path:
+			random_target = global_position + Vector2(
+				randf_range(-radioPatrullaje.x, radioPatrullaje.x),
+				randf_range(-radioPatrullaje.y, radioPatrullaje.y)
 			)
-		path = pathfinding.get_simple_path(global_position,random_target)
-		print(path)
+			
+			# Verificar si el punto es válido en el pathfinding
+			if pathfinding.is_valid_point(random_target):
+				var temp_path = pathfinding.get_simple_path(global_position, random_target)
+				if not temp_path.is_empty():
+					path = temp_path
+					valid_path = true
+					print("Valid path found: ", path)
+			
+			attempts += 1
+		
+		# Si no se encontró un path válido, quedarse quieto
+		if not valid_path:
+			#print("No valid path found after ", attempts, " attempts")
+			path = []
 		
